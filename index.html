@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಸರ್ಕಾರಿ ನೌಕರರ ಇಎಸ್‌ಆರ್ ನಮೂನೆ (ESR Form)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A4 Portrait Print Styles */
+        @media print {
+            body {
+                background: white !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-section {
+                display: block !important;
+                page-break-after: always;
+                height: 297mm;
+                width: 210mm;
+                padding: 15mm;
+                margin: 0 auto;
+                background: white;
+            }
+        }
+        /* Blinking Animation for Footer */
+        @keyframes colorBlink {
+            0% { color: #2563eb; } /* Blue */
+            33% { color: #dc2626; } /* Red */
+            66% { color: #16a34a; } /* Green */
+            100% { color: #9333ea; } /* Purple */
+        }
+        .blinking-footer {
+            animation: colorBlink 3s infinite;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <div class="max-w-4xl mx-auto my-10 bg-white p-8 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center border-b pb-4 mb-6">
+            <h2 class="text-2xl font-bold text-blue-700">ಸರ್ಕಾರಿ ನೌಕರರ ವಿದ್ಯುನ್ಮಾನ ಸೇವಾ ದಾಖಲೆ (ESR Form)</h2>
+            <button onclick="window.print()" class="no-print bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-sm">🖨️ A4 ಪ್ರಿಂಟ್ ಮಾಡಿ (Print A4)</button>
+        </div>
+        
+        <form id="esrForm" class="space-y-6">
+            
+            <!-- ಭಾಗ 1: ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ (Part I: Personal Information) -->
+            <div id="step-1" class="form-step print-section space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">ಭಾಗ I: ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ (Personal Information)</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-medium">1. ನೌಕರರ ಹೆಸರು (English SSLC/SR ಪ್ರಕಾರ): *</label>
+                        <input type="text" id="empNameEn" class="w-full mt-1 p-2 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ನೌಕರರ ಹೆಸರು (ಕನ್ನಡ):</label>
+                        <input type="text" id="empNameKn" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">2. ವಿಳಾಸ, ಜಿಲ್ಲೆ, ತಾಲೂಕು, ಪಿನ್‌ಕೋಡ್, ಮೊಬೈಲ್, ಇಮೇಲ್:</label>
+                        <textarea id="address" rows="2" class="w-full mt-1 p-2 border rounded-md" placeholder="ವಿಳಾಸ ಬರೆಯಿರಿ"></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="district" placeholder="ಜಿಲ್ಲೆ" class="p-2 border rounded-md">
+                        <input type="text" id="taluka" placeholder="ತಾಲೂಕು" class="p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">3. ತಂದೆಯ ಮೊದಲ ಹೆಸರು (SSLC/SR ಪ್ರಕಾರ): *</label>
+                        <input type="text" id="fatherName" class="w-full mt-1 p-2 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">5. ಹುಟ್ಟಿದ ದಿನಾಂಕ (DOB): *</label>
+                        <input type="date" id="dob" class="w-full mt-1 p-2 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಲಿಂಗ, ಧರ್ಮ, ರಾಷ್ಟ್ರೀಯತೆ, ಸಾಮಾಜಿಕ ವರ್ಗ:</label>
+                        <input type="text" id="otherDetails" placeholder="ಲಿಂಗ / ಧರ್ಮ / ವರ್ಗ" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಉತ್ತರಮ / ಗುರುತಿನ ಗುರುತುಗಳು (Identification Marks):</label>
+                        <input type="text" id="idMarks" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ನೌಕರರ ಫೋಟೋ ಅಪ್‌ಲೋಡ್:</label>
+                        <input type="file" id="empPhoto" class="w-full mt-1 p-1 border rounded-md text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಭಾಗ-1 ರ ಸಹಿ (Upload Signature):</label>
+                        <input type="file" id="sig1" class="w-full mt-1 p-1 border rounded-md text-sm" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6 no-print">
+                    <button type="button" onclick="nextStep(2)" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">ಮುಂದೆ (Next)</button>
+                </div>
+            </div>
+
+            <!-- ಭಾಗ 2: ಸಂಗಾತಿ ಮತ್ತು ಕುಟುಂಬ ವಿವರಗಳು (Spouse & Family Particulars) -->
+            <div id="step-2" class="form-step print-section hidden space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">ಭಾಗ II: ಸಂಗಾತಿ ಮತ್ತು ಕುಟುಂಬ ವಿವರಗಳು (Spouse & Family)</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಸಂಗಾತಿಯ ಹೆಸರು ಮತ್ತು ಕೆಲಸದ ವಿವರಗಳು:</label>
+                        <input type="text" id="spouseDetails" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಮನೆ ಹತ್ತಿರದ ವಿಳಾಸ / ಹೊometown ವಿವರಗಳು:</label>
+                        <input type="text" id="hometown" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 font-medium text-purple-700 font-bold">குடும்பದ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ (Family Photo): *</label>
+                        <input type="file" id="familyPhoto" class="w-full mt-1 p-1 border rounded-md text-sm bg-purple-50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಕುಟುಂಬದ ಸದಸ್ಯರ ವಿವರಗಳು ಮತ್ತು ನಾಮಿನೇಷನ್ (Nomination):</label>
+                        <textarea id="familyMembers" rows="3" class="w-full mt-1 p-2 border rounded-md" placeholder="ಸದಸ್ಯರ ಹೆಸರು, ಹುಟ್ಟಿದ ದಿನಾಂಕ, ಸಂಬಂಧ ಇತ್ಯಾದಿ"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಭಾಗ-2 ರ ಸಹಿ (Upload Signature):</label>
+                        <input type="file" id="sig2" class="w-full mt-1 p-1 border rounded-md text-sm" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6 no-print">
+                    <button type="button" onclick="prevStep(1)" class="bg-gray-500 text-white px-6 py-2 rounded-md">ಹಿಂದಕ್ಕೆ (Back)</button>
+                    <button type="button" onclick="nextStep(3)" class="bg-blue-600 text-white px-6 py-2 rounded-md">ಮುಂದೆ (Next)</button>
+                </div>
+            </div>
+
+            <!-- ಭಾಗ 3: ವಿದ್ಯಾರ್ಹತೆ ಮತ್ತು ಹಿಂದಿನ ಸೇವೆ (Qualifications & Previous Service) -->
+            <div id="step-3" class="form-step print-section hidden space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">ಭಾಗ III: ವಿದ್ಯಾರ್ಹತೆ ಮತ್ತು ಹಿಂದಿನ ಸೇವೆ (Qualifications & Service)</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಶೈಕ್ಷಣಿಕ ವಿದ್ಯಾರ್ಹತೆಗಳು (SSLC, PUC, Degree ಇತ್ಯಾದಿ):</label>
+                        <textarea id="education" rows="3" class="w-full mt-1 p-2 border rounded-md" placeholder="ಕೋರ್ಸ್, ವಿಶ್ವವಿದ್ಯಾಲಯ, ತೇರ್ಗಡೆಯಾದ ವರ್ಷ"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಇಲಾಖಾ ಪರೀಕ್ಷೆಗಳು (Departmental Exams):</label>
+                        <textarea id="deptExams" rows="3" class="w-full mt-1 p-2 border rounded-md" placeholder="ಪರೀಕ್ಷೆಯ ಹೆಸರು, ವರ್ಷ, ಪಾಸ್ ಆದ ದಿನಾಂಕ"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಹಿಂದಿನ ಅರ್ಹ ಸೇವೆ / ವಿದೇಶಿ ಸೇವೆ (Previous / Foreign Service):</label>
+                        <input type="text" id="prevService" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಭಾಗ-3 ರ ಸಹಿ (Upload Signature):</label>
+                        <input type="file" id="sig3" class="w-full mt-1 p-1 border rounded-md text-sm" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6 no-print">
+                    <button type="button" onclick="prevStep(2)" class="bg-gray-500 text-white px-6 py-2 rounded-md">ಹಿಂದಕ್ಕೆ (Back)</button>
+                    <button type="button" onclick="nextStep(4)" class="bg-blue-600 text-white px-6 py-2 rounded-md">ಮುಂದೆ (Next)</button>
+                </div>
+            </div>
+
+            <!-- ಭಾಗ 4: ನೇಮಕಾತಿ, ಬಡ್ತಿ ಮತ್ತು ಇತರೆ ವಿವರಗಳು (Appointment, Promotions & Actions) -->
+            <div id="step-4" class="form-step print-section hidden space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">ಭಾಗ IV: ನೇಮಕಾತಿ, ಬಡ್ತಿ, ರಜೆ ಹಾಗೂ ಇತರೆ ವಿವರಗಳು</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಸರ್ವೆಗೆ ಸೇರ ದಿನಾಂಕ ಮತ್ತು ನೇಮಕಾತಿ ಆದೇಶ ಸಂಖ್ಯೆ:</label>
+                        <input type="text" id="appointmentDetails" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಪ್ರಸ್ತುತ ಕೇಡರ್, ವೇತನ ಶ್ರೇಣಿ ಮತ್ತು ಮೂಲ ವೇತನ:</label>
+                        <input type="text" id="payDetails" class="w-full mt-1 p-2 border rounded-md" placeholder="ವೇತನ ಶ್ರೇಣಿ & ಮೂಲ ವೇತನ">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಪ್ರೊಬೇಷನರಿ ಡಿಕ್ಲರೇಷನ್ & ಬಡ್ತಿ ವಿವರಗಳು (Promotions):</label>
+                        <input type="text" id="promotions" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಪ್ರಶಸ್ತಿಗಳು, ರಜೆಗಳು ಮತ್ತು ಇತರೆ ಮಂಜೂರಾತಿಗಳು:</label>
+                        <input type="text" id="awardsLeaves" class="w-full mt-1 p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium">ಭಾಗ-4 ರ ಸಹಿ (Upload Signature):</label>
+                        <input type="file" id="sig4" class="w-full mt-1 p-1 border rounded-md text-sm" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6 no-print">
+                    <button type="button" onclick="prevStep(3)" class="bg-gray-500 text-white px-6 py-2 rounded-md">ಹಿಂದಕ್ಕೆ (Back)</button>
+                    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700">ಎಲ್ಲಾ ಡೇಟಾ ಡೌನ್‌ಲೋಡ್ (Download JSON)</button>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- Blinking Footer Credits (Will NOT appear in print due to 'no-print' class) -->
+        <div class="mt-8 pt-4 border-t text-center text-xs no-print blinking-footer">
+            Designed by: LAKSHMIKANTH R (Mob :9844444871) <br>
+            ಸಲಹೆ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ : VENKATARAMANAIAH PRESIDENT KSTPA CHIKKANAYAKANAHALLI TALUK TUMKUR DISTRICT
+        </div>
+    </div>
+
+    <!-- JavaScript for Multi-step and JSON Download -->
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById('step-' + step).classList.remove('hidden');
+        }
+
+        function prevStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById('step-' + step).classList.remove('hidden');
+        }
+
+        document.getElementById('esrForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                empNameEn: document.getElementById('empNameEn').value,
+                empNameKn: document.getElementById('empNameKn').value,
+                fatherName: document.getElementById('fatherName').value,
+                dob: document.getElementById('dob').value,
+                address: document.getElementById('address').value,
+                district: document.getElementById('district').value,
+                taluka: document.getElementById('taluka').value,
+                otherDetails: document.getElementById('otherDetails').value,
+                idMarks: document.getElementById('idMarks').value,
+                spouseDetails: document.getElementById('spouseDetails').value,
+                hometown: document.getElementById('hometown').value,
+                familyMembers: document.getElementById('familyMembers').value,
+                education: document.getElementById('education').value,
+                deptExams: document.getElementById('deptExams').value,
+                prevService: document.getElementById('prevService').value,
+                appointmentDetails: document.getElementById('appointmentDetails').value,
+                payDetails: document.getElementById('payDetails').value,
+                promotions: document.getElementById('promotions').value,
+                awardsLeaves: document.getElementById('awardsLeaves').value
+            };
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(formData, null, 4));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "esr_data_" + (formData.empNameEn || "employee") + ".json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            
+            alert("ಫಾರ್ಮ್ ಮಾಹಿತಿ ಯಶಸ್ವಿಯಾಗಿ JSON ಫೈಲ್ ರೂಪದಲ್ಲಿ ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ!");
+        });
+    </script>
+</body>
+</html>
